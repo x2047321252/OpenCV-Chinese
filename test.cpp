@@ -22,9 +22,9 @@ void put_text_to_image(int x_offset,int y_offset,String image_path,char* logo_pa
 
 int main(){
 
-    String image_path="xjc.jpeg";//Í¼Æ¬Â·¾¶
+    String image_path="xjc.jpeg";//å›¾ç‰‡è·¯å¾„
 
-    char* logo_path=(char*)"logo.txt";//Ñ§ºÅĞÕÃûÂ·¾¶
+    char* logo_path=(char*)"logo.txt";//å­¦å·å§“åè·¯å¾„
 
     put_text_to_image(20,300,image_path,logo_path);
 
@@ -36,7 +36,7 @@ int main(){
 
 void paint_ascii(Mat& image,int x_offset,int y_offset,unsigned long offset){
 
-    //»æÖÆµÄÆğµã×ø±ê
+    //ç»˜åˆ¶çš„èµ·ç‚¹åæ ‡
 
 	Point p;
 
@@ -44,11 +44,11 @@ void paint_ascii(Mat& image,int x_offset,int y_offset,unsigned long offset){
 
 	p.y = y_offset;
 
-	 //´æ·Åascii×ÖÄ¤
+	 //å­˜æ”¾asciiå­—è†œ
 
 	char buff[16];
 
-	//´ò¿ªascii×Ö¿âÎÄ¼ş
+	//æ‰“å¼€asciiå­—åº“æ–‡ä»¶
 
 	FILE *ASCII;
 
@@ -70,31 +70,31 @@ void paint_ascii(Mat& image,int x_offset,int y_offset,unsigned long offset){
 
 	Point p1 = p;
 
-	for (i = 0; i<16; i++)                  //Ê®Áù¸öchar
+	for (i = 0; i<16; i++)                  //åå…­ä¸ªchar
 
 	{
 
 		p.x = x_offset;
 
-		for (j = 0; j < 8; j++)              //Ò»¸öchar°Ë¸öbit
+		for (j = 0; j < 8; j++)              //ä¸€ä¸ªcharå…«ä¸ªbit
 
 		{
 
 			p1 = p;
 
-			if (buff[i] & (0x80 >> j))    /*²âÊÔµ±Ç°Î»ÊÇ·ñÎª1*/
+			if (buff[i] & (0x80 >> j))    /*æµ‹è¯•å½“å‰ä½æ˜¯å¦ä¸º1*/
 
 			{
 
 				/*
 
-					ÓÉÓÚÔ­±¾ascii×ÖÄ¤ÊÇ8*16µÄ£¬²»¹»´ó£¬
+					ç”±äºåŸæœ¬asciiå­—è†œæ˜¯8*16çš„ï¼Œä¸å¤Ÿå¤§ï¼Œ
 
-					ËùÒÔÔ­±¾µÄÒ»¸öÏñËØµãÓÃ4¸öÏñËØµãÌæ»»£¬
+					æ‰€ä»¥åŸæœ¬çš„ä¸€ä¸ªåƒç´ ç‚¹ç”¨4ä¸ªåƒç´ ç‚¹æ›¿æ¢ï¼Œ
 
-					Ìæ»»ºó¾ÍÓĞ16*32¸öÏñËØµã
+					æ›¿æ¢åå°±æœ‰16*32ä¸ªåƒç´ ç‚¹
 
-					ps£º¸Ğ¾õÕâÑùĞ´´úÂë¶àÓàÁË£¬µ«Ä¿Ç°ÔİÊ±Ö»Ïëµ½ÁËÕâÖÖ·½·¨
+					psï¼šæ„Ÿè§‰è¿™æ ·å†™ä»£ç å¤šä½™äº†ï¼Œä½†ç›®å‰æš‚æ—¶åªæƒ³åˆ°äº†è¿™ç§æ–¹æ³•
 
 				*/
 
@@ -116,7 +116,7 @@ void paint_ascii(Mat& image,int x_offset,int y_offset,unsigned long offset){
 
 			}
 
-			p.x+=2;            //Ô­À´µÄÒ»¸öÏñËØµã±äÎªËÄ¸öÏñËØµã£¬ËùÒÔxºÍy¶¼Ó¦¸Ã+2
+			p.x+=2;            //åŸæ¥çš„ä¸€ä¸ªåƒç´ ç‚¹å˜ä¸ºå››ä¸ªåƒç´ ç‚¹ï¼Œæ‰€ä»¥xå’Œyéƒ½åº”è¯¥+2
 
 		}
 
@@ -128,7 +128,7 @@ void paint_ascii(Mat& image,int x_offset,int y_offset,unsigned long offset){
 
 
 
-void paint_chinese(Mat& image,int x_offset,int y_offset,unsigned long offset){//ÔÚÍ¼Æ¬ÉÏ»­ºº×Ö
+void paint_chinese(Mat& image,int x_offset,int y_offset,unsigned long offset){//åœ¨å›¾ç‰‡ä¸Šç”»æ±‰å­—
 
     Point p;
 
@@ -138,37 +138,37 @@ void paint_chinese(Mat& image,int x_offset,int y_offset,unsigned long offset){//
 
     FILE *HZK;
 
-    char buff[72];//72¸ö×Ö½Ú£¬ÓÃÀ´´æ·Åºº×ÖµÄ
+    char buff[72];//72ä¸ªå­—èŠ‚ï¼Œç”¨æ¥å­˜æ”¾æ±‰å­—çš„
 
     if((HZK=fopen("HZKs2424.hz","rb"))==NULL){
 
         printf("Can't open HZKf2424.hz,Please check the path!");
 
-        exit(0);//ÍË³ö
+        exit(0);//é€€å‡º
 
     }
 
-    fseek(HZK, offset, SEEK_SET);/*½«ÎÄ¼şÖ¸ÕëÒÆ¶¯µ½Æ«ÒÆÁ¿µÄÎ»ÖÃ*/
+    fseek(HZK, offset, SEEK_SET);/*å°†æ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°åç§»é‡çš„ä½ç½®*/
 
-    fread(buff, 72, 1, HZK);/*´ÓÆ«ÒÆÁ¿µÄÎ»ÖÃ¶ÁÈ¡72¸ö×Ö½Ú£¬Ã¿¸öºº×ÖÕ¼72¸ö×Ö½Ú*/
+    fread(buff, 72, 1, HZK);/*ä»åç§»é‡çš„ä½ç½®è¯»å–72ä¸ªå­—èŠ‚ï¼Œæ¯ä¸ªæ±‰å­—å 72ä¸ªå­—èŠ‚*/
 
-    bool mat[24][24];//¶¨ÒåÒ»¸öĞÂµÄ¾ØÕó´æ·Å×ªÖÃºóµÄÎÄ×Ö×ÖÄ¤
+    bool mat[24][24];//å®šä¹‰ä¸€ä¸ªæ–°çš„çŸ©é˜µå­˜æ”¾è½¬ç½®åçš„æ–‡å­—å­—è†œ
 
     int i,j,k;
 
-    for (i = 0; i<24; i++)                 /*24x24µãÕóºº×Ö£¬Ò»¹²ÓĞ24ĞĞ*/
+    for (i = 0; i<24; i++)                 /*24x24ç‚¹é˜µæ±‰å­—ï¼Œä¸€å…±æœ‰24è¡Œ*/
 
 	{
 
-		for (j = 0; j<3; j++)                /*ºáÏòÓĞ3¸ö×Ö½Ú£¬Ñ­»·ÅĞ¶ÏÃ¿¸ö×Ö½ÚµÄ*/
+		for (j = 0; j<3; j++)                /*æ¨ªå‘æœ‰3ä¸ªå­—èŠ‚ï¼Œå¾ªç¯åˆ¤æ–­æ¯ä¸ªå­—èŠ‚çš„*/
 
-			for (k = 0; k<8; k++)              /*Ã¿¸ö×Ö½ÚÓĞ8Î»£¬Ñ­»·ÅĞ¶ÏÃ¿Î»ÊÇ·ñÎª1*/
+			for (k = 0; k<8; k++)              /*æ¯ä¸ªå­—èŠ‚æœ‰8ä½ï¼Œå¾ªç¯åˆ¤æ–­æ¯ä½æ˜¯å¦ä¸º1*/
 
-				if (buff[i * 3 + j] & (0x80 >> k))    /*²âÊÔµ±Ç°Î»ÊÇ·ñÎª1*/
+				if (buff[i * 3 + j] & (0x80 >> k))    /*æµ‹è¯•å½“å‰ä½æ˜¯å¦ä¸º1*/
 
 				{
 
-					mat[j * 8 + k][i] = true;          /*Îª1µÄ´æÈëĞÂµÄ×ÖÄ¤ÖĞ*/
+					mat[j * 8 + k][i] = true;          /*ä¸º1çš„å­˜å…¥æ–°çš„å­—è†œä¸­*/
 
 				}
 
@@ -192,13 +192,13 @@ void paint_chinese(Mat& image,int x_offset,int y_offset,unsigned long offset){//
 
 			if (mat[i][j])
 
-				circle(image, p, 1, Scalar(255, 0, 0), -1);		  //Ğ´(Ìæ»»)ÏñËØµã
+				circle(image, p, 1, Scalar(255, 0, 0), -1);		  //å†™(æ›¿æ¢)åƒç´ ç‚¹
 
-			p.x++;                                                //ÓÒÒÆÒ»¸öÏñËØµã
+			p.x++;                                                //å³ç§»ä¸€ä¸ªåƒç´ ç‚¹
 
 		}
 
-		p.y++;                                                    //ÏÂÒÆÒ»¸öÏñËØµã
+		p.y++;                                                    //ä¸‹ç§»ä¸€ä¸ªåƒç´ ç‚¹
 
 	}
 
@@ -206,19 +206,19 @@ void paint_chinese(Mat& image,int x_offset,int y_offset,unsigned long offset){//
 
 
 
-void put_text_to_image(int x_offset,int y_offset,String image_path,char* logo_path){//½«ºº×ÖÅªÉÏÍ¼Æ¬
-//xºÍy¾ÍÊÇµÚÒ»¸ö×ÖÔÚÍ¼Æ¬ÉÏµÄÆğÊ¼×ø±ê
-    //Í¨¹ıÍ¼Æ¬Â·¾¶»ñÈ¡Í¼Æ¬
+void put_text_to_image(int x_offset,int y_offset,String image_path,char* logo_path){//å°†æ±‰å­—å¼„ä¸Šå›¾ç‰‡
+//xå’Œyå°±æ˜¯ç¬¬ä¸€ä¸ªå­—åœ¨å›¾ç‰‡ä¸Šçš„èµ·å§‹åæ ‡
+    //é€šè¿‡å›¾ç‰‡è·¯å¾„è·å–å›¾ç‰‡
 
     Mat image=imread(image_path);
 
-    int length=18;//Òª´òÓ¡µÄ×Ö·û³¤¶È
+    int length=18;//è¦æ‰“å°çš„å­—ç¬¦é•¿åº¦
 
-    unsigned char qh,wh;//¶¨ÒåÇøºÅ£¬Î»ºÅ
+    unsigned char qh,wh;//å®šä¹‰åŒºå·ï¼Œä½å·
 
-    unsigned long offset;//Æ«ÒÆÁ¿
+    unsigned long offset;//åç§»é‡
 
-    unsigned char hexcode[30];//ÓÃÓÚ´æ·Å¼ÇÊÂ±¾¶ÁÈ¡µÄÊ®Áù½øÖÆ,¼ÇµÃÒªÓÃÎŞ·ûºÅ
+    unsigned char hexcode[30];//ç”¨äºå­˜æ”¾è®°äº‹æœ¬è¯»å–çš„åå…­è¿›åˆ¶,è®°å¾—è¦ç”¨æ— ç¬¦å·
 
     FILE* file_logo;
 
@@ -236,21 +236,21 @@ void put_text_to_image(int x_offset,int y_offset,String image_path,char* logo_pa
 
     fread(hexcode, length, 1, file_logo);
 
-    int x =x_offset,y = y_offset;//x,y:ÔÚÍ¼Æ¬ÉÏ»æÖÆÎÄ×ÖµÄÆğÊ¼×ø±ê
+    int x =130,y =290t;//x,y:åœ¨å›¾ç‰‡ä¸Šç»˜åˆ¶æ–‡å­—çš„èµ·å§‹åæ ‡
 
     for(int m=0;m<length;){
 
         if(hexcode[m]==0x23){
 
-            break;//¶Áµ½#ºÅÊ±½áÊø
+            break;//è¯»åˆ°#å·æ—¶ç»“æŸ
 
         }
 
         else if(hexcode[m]>0xaf){
 
-            qh=hexcode[m]-0xaf;//Ê¹ÓÃµÄ×Ö¿âÀïÊÇÒÔºº×Ö°¡¿ªÍ·£¬¶ø²»ÊÇÒÔºº×Ö·ûºÅ¿ªÍ·
+            qh=hexcode[m]-0xaf;//ä½¿ç”¨çš„å­—åº“é‡Œæ˜¯ä»¥æ±‰å­—å•Šå¼€å¤´ï¼Œè€Œä¸æ˜¯ä»¥æ±‰å­—ç¬¦å·å¼€å¤´
 
-            wh=hexcode[m+1] - 0xa0;//¼ÆËãÎ»Âë
+            wh=hexcode[m+1] - 0xa0;//è®¡ç®—ä½ç 
 
             offset=(94*(qh-1)+(wh-1))*72L;
 
@@ -258,41 +258,41 @@ void put_text_to_image(int x_offset,int y_offset,String image_path,char* logo_pa
 
             /*
 
-            ¼ÆËãÔÚºº×Ö¿âÖĞµÄÆ«ÒÆÁ¿
+            è®¡ç®—åœ¨æ±‰å­—åº“ä¸­çš„åç§»é‡
 
-            ¶ÔÓÚÃ¿¸öºº×Ö£¬Ê¹ÓÃ24*24µÄµãÕóÀ´±íÊ¾µÄ
+            å¯¹äºæ¯ä¸ªæ±‰å­—ï¼Œä½¿ç”¨24*24çš„ç‚¹é˜µæ¥è¡¨ç¤ºçš„
 
-            Ò»ĞĞÓĞÈı¸ö×Ö½Ú£¬Ò»¹²24ĞĞ£¬ËùÒÔĞèÒª72¸ö×Ö½ÚÀ´±íÊ¾
+            ä¸€è¡Œæœ‰ä¸‰ä¸ªå­—èŠ‚ï¼Œä¸€å…±24è¡Œï¼Œæ‰€ä»¥éœ€è¦72ä¸ªå­—èŠ‚æ¥è¡¨ç¤º
 
-            ÈçÕÔ×Ö
+            å¦‚èµµå­—
 
-            ÇøÎ»ÂëÊÇ5352
+            åŒºä½ç æ˜¯5352
 
-            Ê®Áù½øÖÆÎ»3534
+            åå…­è¿›åˆ¶ä½3534
 
-            »úÄÚÂë¾ÍÊÇd5d4
+            æœºå†…ç å°±æ˜¯d5d4
 
-            d5-af=38£¨Ê®½øÖÆ£©£¬ÒòÎªÊÇ´Óºº×Ö°¡¿ªÊ¼µÄ£¬ËùÒÔ¼õÈ¥µÄÊÇaf¶ø²»ÊÇa0£¬38+15µÈÓÚ53ÓëÇøÂëÏà¶ÔÓ¦
+            d5-af=38ï¼ˆåè¿›åˆ¶ï¼‰ï¼Œå› ä¸ºæ˜¯ä»æ±‰å­—å•Šå¼€å§‹çš„ï¼Œæ‰€ä»¥å‡å»çš„æ˜¯afè€Œä¸æ˜¯a0ï¼Œ38+15ç­‰äº53ä¸åŒºç ç›¸å¯¹åº”
 
             d4-a0=52
 
             */
 
-            m=m+2;//Ò»¸öºº×ÖµÄ»úÄÚÂëÕ¼Á½¸ö×Ö½Ú£¬
+            m=m+2;//ä¸€ä¸ªæ±‰å­—çš„æœºå†…ç å ä¸¤ä¸ªå­—èŠ‚ï¼Œ
 
-            x+=24;//Ò»¸öºº×ÖÎª24*24¸öÏñËØµã£¬ÓÉÓÚÊÇË®Æ½·ÅÖÃ£¬ËùÒÔÊÇÏòÓÒÒÆ¶¯24¸öÏñËØµã
+            x+=24;//ä¸€ä¸ªæ±‰å­—ä¸º24*24ä¸ªåƒç´ ç‚¹ï¼Œç”±äºæ˜¯æ°´å¹³æ”¾ç½®ï¼Œæ‰€ä»¥æ˜¯å‘å³ç§»åŠ¨24ä¸ªåƒç´ ç‚¹
 
         }
 
-        else{//µ±¶ÁÈ¡µÄ×Ö·ûÎªASCIIÂëÊ±
+        else{//å½“è¯»å–çš„å­—ç¬¦ä¸ºASCIIç æ—¶
 
         wh=hexcode[m];
 
-        offset=wh*16l;//¼ÆËãÓ¢ÎÄ×Ö·ûµÄÆ«ÒÆÁ¿
+        offset=wh*16l;//è®¡ç®—è‹±æ–‡å­—ç¬¦çš„åç§»é‡
 
         paint_ascii(image,x,y,offset);
 
-        m++;//Ó¢ÎÄ×Ö·ûÔÚÎÄ¼şÀï±íÊ¾Ö»Õ¼Ò»¸ö×Ö½Ú£¬ËùÒÔÍùºóÒÆÒ»Î»¾ÍĞĞÁË
+        m++;//è‹±æ–‡å­—ç¬¦åœ¨æ–‡ä»¶é‡Œè¡¨ç¤ºåªå ä¸€ä¸ªå­—èŠ‚ï¼Œæ‰€ä»¥å¾€åç§»ä¸€ä½å°±è¡Œäº†
 
         x+=16;
  }
